@@ -1,0 +1,11 @@
+.button{
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+
+.button:active{
+    opacity: 0.6;
+}
