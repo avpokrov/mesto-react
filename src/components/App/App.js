@@ -1,23 +1,34 @@
+import React, { useState, useEffect } from 'react';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer'
 import PopupWithForm from '../PopupWithForm/PopupWithForm'
-import ImagePopup from '../ImagePopup/ImagePopup' 
+import ImagePopup from '../ImagePopup/ImagePopup'
 
 function App() {
 
+  const [isEditProfilePopupOpen, setProfilePopupOpen] = React.useState(false);
+  const [isAddPlacePopupOpen, setPlacePopupOpen] = React.useState(false);
+  const [isEditAvatarPopupOpen, setAvatarPopupOpen] = React.useState(false);
+
+
   const handleEditAvatarClick = () => {
-    document.querySelector('.popup_edit_img').classList.add('popup__open');
+    setAvatarPopupOpen(true);
   }
 
   const handleEditProfileClick = () => {
-    document.querySelector('.popup_profile_edit').classList.add('popup__open');
+    setProfilePopupOpen(true);
   }
 
   const handleAddPlaceClick = () => {
-    document.querySelector('.popup_card_add').classList.add('popup__open');
+    setPlacePopupOpen(true);
   }
 
+  const closeAllPopups = () => {
+    setAvatarPopupOpen(false);
+    setProfilePopupOpen(false);
+    setPlacePopupOpen(false);
+  } 
 
   return (
     <div className="container">
@@ -34,10 +45,12 @@ function App() {
         name='profile_edit'
         title='Редактировать профиль'
         titleButton='Сохранить'
+        isOpen={isEditProfilePopupOpen}
+        onClose={closeAllPopups}
       >
-        <input type="text" id="nameProfile" name="nameProfile" className="popup__input popup__input_name" minlength="2" maxlength="40" required />
+        <input type="text" id="nameProfile" name="nameProfile" className="popup__input popup__input_name" minLength="2" maxLength="40" required />
         <span className="popup__error nameProfile-error"></span>
-        <input type="text" id="infoProfile" name="infoProfile" className="popup__input popup__input_info" minlength="2" maxlength="200" required />
+        <input type="text" id="infoProfile" name="infoProfile" className="popup__input popup__input_info" minLength="2" maxLength="200" required />
         <span className="popup__error infoProfile-error"></span>
       </PopupWithForm>
 
@@ -45,6 +58,8 @@ function App() {
         name='edit_img'
         title='Обновить аватар'
         titleButton='Сохранить'
+        isOpen={isEditAvatarPopupOpen}
+        onClose={closeAllPopups}
       >
         <input type="url" placeholder="Ссылка на аватар" id="srcAvatar" name="link" className="popup__input popup__input_src-avatar" required />
         <span className="popup__error srcAvatar-error"></span>
@@ -54,8 +69,10 @@ function App() {
         name='card_add'
         title='Новое место'
         titleButton='Сохранить'
+        isOpen={isAddPlacePopupOpen}
+        onClose={closeAllPopups}
       >
-        <input type="text" placeholder="Название" id="InfoCard" name="name" className="popup__input popup__input_info-card" minlength="2" maxlength="30" required />
+        <input type="text" placeholder="Название" id="InfoCard" name="name" className="popup__input popup__input_info-card" minLength="2" maxLength="30" required />
         <span className="popup__error InfoCard-error"></span>
         <input type="url" placeholder="Ссылка на картинку" id="srcCard" name="link" className="popup__input popup__input_src-card" required />
         <span className="popup__error srcCard-error"></span>
