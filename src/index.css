@@ -17,10 +17,13 @@
 @import url(./blocks/profile/__subtitle/profile__subtitle.css);
 @import url(./blocks/cards-section/cards-section.css);
 @import url(./blocks/button-like/button-like.css);
-@import url(./blocks/button-like/_active/buttton-like_active.css);
+@import url(./blocks/button-like/_enable/buttton-like_enable.css);
+@import url(./blocks/button-like/_disable/buttton-like_disable.css);
 @import url(./blocks/cards/cards.css);
 @import url(./blocks/card/card.css);
 @import url(./blocks/card/__button-del/card__button-del.css);
+@import url(./blocks/card/__button-del/_hidden/card__delete-button_hidden.css);
+@import url(./blocks/card/__button-del/_visible/card__delete-button_visible.css);
 @import url(./blocks/card/__img-signature/card__img-signature.css);
 @import url(./blocks/card/__img/card__img.css);
 @import url(./blocks/card/__title/card__title.css);
