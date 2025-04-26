@@ -1,0 +1,7 @@
+.button_editProfile {
+  border: 1px solid #FFFFFF;
+  min-height: 24px;
+  min-width:  24px;
+  background-image: url("../../../images/pen.svg");
+  background-size: 50% 50%;
+}
