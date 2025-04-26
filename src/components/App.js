@@ -1,13 +1,11 @@
-import logo from '../images/logo.svg';
+import Header from '../components/header/header';
 
 function App() {
   return (
    
     <body class="page">
       <main class="main center">
-        <header class="header ident-top40px">
-          <img src={logo} alt="logo" class="header__logo"/>
-        </header>
+      <Header />
         <section class="profile ident-top40px">
           <div class="profile_box">
             <div class="profile__wrapper">
