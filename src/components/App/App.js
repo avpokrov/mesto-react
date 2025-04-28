@@ -1,31 +1,16 @@
-import Header from '../components/header/header';
+import React from 'react';
+import Header from '../header/header';
+import Main from '../Main/Main';
+import Footer from '../Footer/Footer';
 
 function App() {
   return (
-   
+
     <body class="page">
       <main class="main center">
-      <Header />
-        <section class="profile ident-top40px">
-          <div class="profile_box">
-            <div class="profile__wrapper">
-              <img class="profile__image" src="" alt="avatar"/>
-            </div>
-            <div class="profile__info">
-              <div class="profile__name-box">
-                <h1 class="profile__name"></h1>
-                <button class="button button_editProfile active-element"></button>
-              </div>
-              <p class="profile__description"></p>
-            </div>
-          </div>
-          <button class="button button_addCard active-element"></button>
-        </section>
-        <ul class="cards ident-top40px">
-        </ul>
-        <footer class="footer">
-          <p class="footer__text">&#169; 2024 Mesto Russia</p>
-        </footer>
+        <Header />
+        <Main />
+        <Footer />
       </main>
       <section class="popup popup-editProfile">
         <div class="popup__container">
@@ -60,11 +45,11 @@ function App() {
       <section class="popup popup-img">
         <div class="popup-img__container">
           <button class="button button_close active-element"></button>
-          <img class="popup-img__image" src="" alt=""/>
+          <img class="popup-img__image" src="" alt="" />
           <h3 class="popup-img__text"></h3>
         </div>
       </section>
-    
+
       <section class="popup popup-accept">
         <div class="popup__container">
           <button class="button button_close active-element"></button>
@@ -81,17 +66,17 @@ function App() {
           <h2 class="popup__header">Обновить аватар</h2>
           <form name="updateAvatar" class="popup__form" novalidate>
             <input id="urlAvatar" name="link" class="popup__input popup__field-text popup-link" placeholder="Введите url"
-            pattern="https?://.+" type="url" required></input>
+              pattern="https?://.+" type="url" required></input>
             <span class="urlAvatar-error popup__field-text-error"></span>
             <button class="popup__button active-element">Сохранить</button>
           </form>
         </div>
       </section>
-    
+
       <template id="card">
         <li class="card">
           <div class="trash active-element"></div>
-          <img class="card__img" src="" alt=""/>
+          <img class="card__img" src="" alt="" />
           <div class="card__info">
             <h2 class="card__name"></h2>
             <div class="like__block">
@@ -102,7 +87,7 @@ function App() {
         </li>
       </template>
     </body>
-    
+
 
   );
 }
