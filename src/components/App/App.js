@@ -2,6 +2,7 @@ import React from 'react';
 import Header from '../header/header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
+import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 function App() {
   return (
@@ -12,6 +13,19 @@ function App() {
         <Main />
         <Footer />
       </main>
+      <PopupWithForm name='editProfile'
+        title='Редактировать профиль'
+      >
+        <input id="nameProfile" name="name" className={'popup__input popup__field-text popup-name'} minlength="2"
+          maxlength="40" required></input>
+        <span className={'nameProfile-error popup__field-text-error'}></span>
+        <input id="descriptionProfile" name="about" className={'popup__input popup__field-text popup-description'}
+          minlength="2" maxlength="200" required></input>
+        <span className={'descriptionProfile-error popup__field-text-error'}></span>
+        <button className={'popup__button active-element'}>Сохранить</button>
+      </PopupWithForm>
+
+
       <section class="popup popup-editProfile">
         <div class="popup__container">
           <button class="button button_close active-element"></button>
