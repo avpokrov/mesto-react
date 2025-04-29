@@ -9,17 +9,18 @@ function handleEditAvatarClick() {
 
 
 
-function Main() {
+ function Main() {
     useEffect(() => {
         Promise.all([api.getMyInfo(), api.getCards()])
             .then(([userData, cards]) => {
                 setUserData(userData);
                 setCards(cards);
+                console.log(userData, cards)
             })
             .catch((err) => console.log(err));
     }, [])
-    const [userData, setUserData] = useState({});
-    const [cards, setCards] = useState([]);
+     const [userData, setUserData] = useState({});
+     const [cards, setCards] = useState([]);
 
     return (
         <>

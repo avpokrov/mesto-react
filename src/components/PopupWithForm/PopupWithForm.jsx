@@ -5,7 +5,7 @@ function PopupWithForm({ name, title, children }) {
             <div className={'popup__container'}>
                 <button className={'button button_close active-element'}></button>
                 <h2 className={'popup__header'}>{title}</h2>
-                <form name={name} className={'popup__form'} novalidate>
+                <form name={name} className={'popup__form'} noValidate>
                     {children}
                 </form>
             </div>

@@ -5,27 +5,29 @@ import Footer from '../Footer/Footer';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 function App() {
+  debugger;
   return (
 
-    <body class="page">
-      <main class="main center">
+    <div className="page">
+      <main className="main center">
         <Header />
         <Main />
         <Footer />
       </main>
-      <PopupWithForm name='editProfile'
+      <PopupWithForm
+        name='editProfile'
         title='Редактировать профиль'
       >
-        <input id="nameProfile" name="name" className={'popup__input popup__field-text popup-name'} minlength="2"
-          maxlength="40" required></input>
-        <span className={'nameProfile-error popup__field-text-error'}></span>
-        <input id="descriptionProfile" name="about" className={'popup__input popup__field-text popup-description'}
-          minlength="2" maxlength="200" required></input>
-        <span className={'descriptionProfile-error popup__field-text-error'}></span>
-        <button className={'popup__button active-element'}>Сохранить</button>
+        <input id='nameProfile' name='name' className={'popup__input popup__field-text popup-name'} minLength='2'
+           maxLength='40' required placeholder="Имя" />
+         <span className={'nameProfile-error popup__field-text-error'}></span>
+         <input id='descriptionProfile' name='about' className={'popup__input popup__field-text popup-description'}
+           minLength='2' maxLength='200' required placeholder="Описание" />
+         <span className={'descriptionProfile-error popup__field-text-error'}></span>
+         <button className={'popup__button active-element'}>Сохранить</button>
       </PopupWithForm>
 
-
+      {/* 
       <section class="popup popup-editProfile">
         <div class="popup__container">
           <button class="button button_close active-element"></button>
@@ -85,22 +87,9 @@ function App() {
             <button class="popup__button active-element">Сохранить</button>
           </form>
         </div>
-      </section>
+      </section> */}
 
-      <template id="card">
-        <li class="card">
-          <div class="trash active-element"></div>
-          <img class="card__img" src="" alt="" />
-          <div class="card__info">
-            <h2 class="card__name"></h2>
-            <div class="like__block">
-              <div class="like active-element"></div>
-              <div class="like__sum"></div>
-            </div>
-          </div>
-        </li>
-      </template>
-    </body>
+    </div>
 
 
   );
