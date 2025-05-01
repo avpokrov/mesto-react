@@ -1,7 +1,7 @@
 function PopupWithForm({ name, title, children }) {
 
     return (
-        <section className={`popup popup-${name} popup_opened`}>
+        <section className={`popup popup-${name}`}>
             <div className={'popup__container'}>
                 <button className={'button button_close active-element'}></button>
                 <h2 className={'popup__header'}>{title}</h2>

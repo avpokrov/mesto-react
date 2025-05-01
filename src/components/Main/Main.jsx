@@ -3,13 +3,9 @@ import Card from '../Card/Card'
 import { useState, useEffect } from 'react';
 
 function handleEditAvatarClick() {
-    const editAvatarPopup = document.querySelector('.popup-editProfile');
-    editAvatarPopup.classList.add('popup_opened');
+
 }
-
-
-
- function Main() {
+function Main() {
     useEffect(() => {
         Promise.all([api.getMyInfo(), api.getCards()])
             .then(([userData, cards]) => {
@@ -19,8 +15,8 @@ function handleEditAvatarClick() {
             })
             .catch((err) => console.log(err));
     }, [])
-     const [userData, setUserData] = useState({});
-     const [cards, setCards] = useState([]);
+    const [userData, setUserData] = useState({});
+    const [cards, setCards] = useState([]);
 
     return (
         <>
@@ -41,8 +37,8 @@ function handleEditAvatarClick() {
             </section>
             <ul class="cards ident-top40px">
                 {cards.map((item) => (
-                    <Card key={item._id} userId={userData._id} {...item}/>
-                ))} 
+                    <Card key={item._id} userId={userData._id} {...item} />
+                ))}
             </ul>
         </>
     );
