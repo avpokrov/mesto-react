@@ -1,9 +1,9 @@
-function PopupWithForm({ name, title, children }) {
+function PopupWithForm({ name, title, children, isOpen, closePopup }) {
 
     return (
-        <section className={`popup popup-${name}`}>
+        <section className={`popup popup-${name} ${ isOpen ? 'popup_opened' : ''}`}>
             <div className={'popup__container'}>
-                <button className={'button button_close active-element'}></button>
+                <button onClick={closePopup} className={'button button_close active-element'}></button>
                 <h2 className={'popup__header'}>{title}</h2>
                 <form name={name} className={'popup__form'} noValidate>
                     {children}

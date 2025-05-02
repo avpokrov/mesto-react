@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState, useEffect } from 'react';
 import Header from '../header/header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
@@ -6,18 +7,41 @@ import PopupWithForm from '../PopupWithForm/PopupWithForm';
 import PopupImg from '../PopupImg/PopupImg';
 
 function App() {
-  debugger;
+  const [isEditProfilePopupOpen, changeIsEditProfilePopupOpen] = useState(false);
+  const [isAddPlacePopupOpen, changeIsAddPlacePopupOpen] = useState(false);
+  const [isEditAvatarPopupOpen, changeIsEditAvatarPopupOpen] = useState(false);
+
+  function closeAllPopup() {
+    switch (true) {
+      case isEditProfilePopupOpen:
+        changeIsEditProfilePopupOpen(false);
+        break;
+      case isAddPlacePopupOpen:
+        changeIsAddPlacePopupOpen(false);
+        break;
+      case isEditAvatarPopupOpen:
+        changeIsEditAvatarPopupOpen(false);
+        break;
+    }
+  }
+
   return (
 
     <div className="page">
       <main className="main center">
         <Header />
-        <Main />
+        <Main
+          openProfilePopupOpen={changeIsEditProfilePopupOpen}
+          openAddPlacePopupOpen={changeIsAddPlacePopupOpen}
+          openEditAvatarPopupOpen={changeIsEditAvatarPopupOpen}
+        />
         <Footer />
       </main>
       <PopupWithForm
         name='editProfile'
         title='Редактировать профиль'
+        isOpen={isEditProfilePopupOpen}
+        closePopup={closeAllPopup}
       >
         <input id='nameProfile' name='name' className={'popup__input popup__field-text popup-name'} minLength='2'
           maxLength='40' required placeholder="Имя" />
@@ -31,6 +55,8 @@ function App() {
       <PopupWithForm
         name={'createCard'}
         title={'Новое место'}
+        isOpen={isAddPlacePopupOpen}        
+        closePopup={closeAllPopup}
       >
         <input id="addCard" name="name" class="popup__input popup__field-text popup-name" placeholder="Название"
           minlength="2" maxlength="30" required></input>
@@ -43,7 +69,8 @@ function App() {
 
       <PopupWithForm
         name={'accept'}
-        title={'Вы уверены?'}
+        title={'Вы уверены?'}        
+        closePopup={closeAllPopup}
       >
         <div class="popup-accept__block">
           <button class="popup__button active-element popup__button_accept popup__button_accept_accept">Да</button>
@@ -54,6 +81,8 @@ function App() {
       <PopupWithForm
         name={'updateAvatar'}
         title={'Обновить аватар'}
+        isOpen={isEditAvatarPopupOpen}
+        closePopup={closeAllPopup}
       >
         <input id="urlAvatar" name="link" class="popup__input popup__field-text popup-link" placeholder="Введите url"
           pattern="https?://.+" type="url" required></input>
@@ -61,7 +90,8 @@ function App() {
         <button class="popup__button active-element">Сохранить</button>
       </PopupWithForm>
 
-      <PopupImg />
+      <PopupImg
+        closePopup={closeAllPopup} />
 
     </div>
 

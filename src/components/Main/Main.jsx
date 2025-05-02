@@ -2,16 +2,13 @@ import api from '../../utils/Api';
 import Card from '../Card/Card'
 import { useState, useEffect } from 'react';
 
-function handleEditAvatarClick() {
 
-}
-function Main() {
+function Main({openProfilePopupOpen, openAddPlacePopupOpen, openEditAvatarPopupOpen}) {
     useEffect(() => {
         Promise.all([api.getMyInfo(), api.getCards()])
             .then(([userData, cards]) => {
                 setUserData(userData);
                 setCards(cards);
-                console.log(userData, cards)
             })
             .catch((err) => console.log(err));
     }, [])
@@ -20,22 +17,22 @@ function Main() {
 
     return (
         <>
-            <section class="profile ident-top40px">
-                <div class="profile_box">
-                    <div class="profile__wrapper">
-                        <img class="profile__image" src={userData.avatar} alt="avatar" />
+            <section className='profile ident-top40px'>
+                <div className='profile_box'>
+                    <div onClick={() => openEditAvatarPopupOpen(true)} className='profile__wrapper'>
+                        <img className='profile__image' src={userData.avatar} alt='avatar' />
                     </div>
-                    <div class="profile__info">
-                        <div class="profile__name-box">
-                            <h1 class="profile__name">{userData.name}</h1>
-                            <button onClick={handleEditAvatarClick} class="button button_editProfile active-element"></button>
+                    <div className='profile__info'>
+                        <div className='profile__name-box'>
+                            <h1 className='profile__name'>{userData.name}</h1>
+                            <button onClick={() => openProfilePopupOpen(true)} className='button button_editProfile active-element'></button>
                         </div>
-                        <p class="profile__description">{userData.about}</p>
+                        <p className='profile__description'>{userData.about}</p>
                     </div>
                 </div>
-                <button class="button button_addCard active-element"></button>
+                <button onClick={() => openAddPlacePopupOpen(true)} className='button button_addCard active-element'></button>
             </section>
-            <ul class="cards ident-top40px">
+            <ul className='cards ident-top40px'>
                 {cards.map((item) => (
                     <Card key={item._id} userId={userData._id} {...item} />
                 ))}
