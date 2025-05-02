@@ -3,7 +3,7 @@ import Card from '../Card/Card'
 import { useState, useEffect } from 'react';
 
 
-function Main({openProfilePopupOpen, openAddPlacePopupOpen, openEditAvatarPopupOpen}) {
+function Main({openProfilePopupOpen, openAddPlacePopupOpen, openEditAvatarPopupOpen, handleCardClick}) {
     useEffect(() => {
         Promise.all([api.getMyInfo(), api.getCards()])
             .then(([userData, cards]) => {
@@ -34,7 +34,7 @@ function Main({openProfilePopupOpen, openAddPlacePopupOpen, openEditAvatarPopupO
             </section>
             <ul className='cards ident-top40px'>
                 {cards.map((item) => (
-                    <Card key={item._id} userId={userData._id} {...item} />
+                    <Card key={item._id} userId={userData._id} {...item} handleCardClick={handleCardClick}/>
                 ))}
             </ul>
         </>

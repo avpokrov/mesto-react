@@ -1,10 +1,10 @@
-function PopupImg ({imgUrl, closePopup}) {
+function PopupImg ({closePopup, selectedCard}) {
     return(
-        <section class="popup popup-img">
-        <div class="popup-img__container">
-          <button class="button button_close active-element" onClick={closePopup}></button>
-          <img class="popup-img__image" src={imgUrl} alt="" />
-          <h3 class="popup-img__text"></h3>
+        <section className={`popup popup-img ${selectedCard ? 'popup_opened' : '' }`}>
+        <div className='popup-img__container'>
+          <button className='button button_close active-element' onClick={closePopup}></button>
+          <img className='popup-img__image' src={selectedCard} alt='' />
+          <h3 className='popup-img__text'></h3>
         </div>
       </section>
     );

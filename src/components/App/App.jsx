@@ -10,6 +10,7 @@ function App() {
   const [isEditProfilePopupOpen, changeIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, changeIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, changeIsEditAvatarPopupOpen] = useState(false);
+  const [selectedCard, setSelectedCard] = useState('');
 
   function closeAllPopup() {
     switch (true) {
@@ -22,7 +23,14 @@ function App() {
       case isEditAvatarPopupOpen:
         changeIsEditAvatarPopupOpen(false);
         break;
+      case selectedCard:
+        setSelectedCard('');
+        break;
     }
+  }
+
+  function handleCardClick(imgUrl) {
+    setSelectedCard(imgUrl);
   }
 
   return (
@@ -34,6 +42,7 @@ function App() {
           openProfilePopupOpen={changeIsEditProfilePopupOpen}
           openAddPlacePopupOpen={changeIsAddPlacePopupOpen}
           openEditAvatarPopupOpen={changeIsEditAvatarPopupOpen}
+          handleCardClick={handleCardClick}
         />
         <Footer />
       </main>
@@ -55,7 +64,7 @@ function App() {
       <PopupWithForm
         name={'createCard'}
         title={'Новое место'}
-        isOpen={isAddPlacePopupOpen}        
+        isOpen={isAddPlacePopupOpen}
         closePopup={closeAllPopup}
       >
         <input id="addCard" name="name" class="popup__input popup__field-text popup-name" placeholder="Название"
@@ -69,7 +78,7 @@ function App() {
 
       <PopupWithForm
         name={'accept'}
-        title={'Вы уверены?'}        
+        title={'Вы уверены?'}
         closePopup={closeAllPopup}
       >
         <div class="popup-accept__block">
@@ -91,7 +100,8 @@ function App() {
       </PopupWithForm>
 
       <PopupImg
-        closePopup={closeAllPopup} />
+        closePopup={closeAllPopup}
+        selectedCard={selectedCard} />
 
     </div>
 

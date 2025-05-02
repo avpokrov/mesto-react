@@ -1,6 +1,6 @@
-function Card({ likes, link, name, owner, userId }) {
+function Card({ likes, link, name, owner, userId, handleCardClick}) {    
     return (
-        <li class="card">
+        <li class="card" onClick={handleCardClick(link)}>
             <div class="trash active-element"></div>
             <img class="card__img" src={link} alt="" />
             <div class="card__info">
