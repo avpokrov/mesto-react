@@ -10,10 +10,10 @@ function App() {
   const [isEditProfilePopupOpen, changeIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, changeIsAddPlacePopupOpen] = useState(false);
   const [isEditAvatarPopupOpen, changeIsEditAvatarPopupOpen] = useState(false);
-  const [selectedCard, setSelectedCard] = useState('');
+  const [selectedCard, setSelectedCard] = useState(null);
 
   function closeAllPopup() {
-    switch (true) {
+    switch (true ) {
       case isEditProfilePopupOpen:
         changeIsEditProfilePopupOpen(false);
         break;
@@ -23,8 +23,8 @@ function App() {
       case isEditAvatarPopupOpen:
         changeIsEditAvatarPopupOpen(false);
         break;
-      case selectedCard:
-        setSelectedCard('');
+      default:
+        setSelectedCard(null);
         break;
     }
   }
@@ -35,8 +35,8 @@ function App() {
 
   return (
 
-    <div className="page">
-      <main className="main center">
+    <>
+      <main className='main center'>
         <Header />
         <Main
           openProfilePopupOpen={changeIsEditProfilePopupOpen}
@@ -53,10 +53,10 @@ function App() {
         closePopup={closeAllPopup}
       >
         <input id='nameProfile' name='name' className={'popup__input popup__field-text popup-name'} minLength='2'
-          maxLength='40' required placeholder="Имя" />
+          maxLength='40' required placeholder='Имя' />
         <span className={'nameProfile-error popup__field-text-error'}></span>
         <input id='descriptionProfile' name='about' className={'popup__input popup__field-text popup-description'}
-          minLength='2' maxLength='200' required placeholder="Описание" />
+          minLength='2' maxLength='200' required placeholder='Описание' />
         <span className={'descriptionProfile-error popup__field-text-error'}></span>
         <button className={'popup__button active-element'}>Сохранить</button>
       </PopupWithForm>
@@ -67,13 +67,13 @@ function App() {
         isOpen={isAddPlacePopupOpen}
         closePopup={closeAllPopup}
       >
-        <input id="addCard" name="name" class="popup__input popup__field-text popup-name" placeholder="Название"
-          minlength="2" maxlength="30" required></input>
-        <span class="addCard-error popup__field-text-error"></span>
-        <input id="urlCard" name="link" class="popup__input popup__field-text popup-description"
-          placeholder="Введите url" type="url"></input>
-        <span class="urlCard-error popup__field-text-error"></span>
-        <button class="popup__button active-element">Создать</button>
+        <input id='addCard' name='name' className={'popup__input popup__field-text popup-name'} placeholder='Название'
+          minLength='2' maxLength='30' required></input>
+        <span className={'addCard-error popup__field-text-error'}></span>
+        <input id='urlCard' name='link' className={'popup__input popup__field-text popup-description'}
+          placeholder='Введите url' type='url'></input>
+        <span className={'urlCard-error popup__field-text-error'}></span>
+        <button className={'popup__button active-element'}>Создать</button>
       </PopupWithForm>
 
       <PopupWithForm
@@ -81,9 +81,9 @@ function App() {
         title={'Вы уверены?'}
         closePopup={closeAllPopup}
       >
-        <div class="popup-accept__block">
-          <button class="popup__button active-element popup__button_accept popup__button_accept_accept">Да</button>
-          <button class="popup__button active-element popup__button_accept popup__button_accept_cancel">Нет</button>
+        <div className='popup-accept__block'>
+          <button className={'popup__button active-element popup__button_accept popup__button_accept_accept'}>Да</button>
+          <button className={'popup__button active-element popup__button_accept popup__button_accept_cancel'}>Нет</button>
         </div>
       </PopupWithForm>
 
@@ -93,17 +93,17 @@ function App() {
         isOpen={isEditAvatarPopupOpen}
         closePopup={closeAllPopup}
       >
-        <input id="urlAvatar" name="link" class="popup__input popup__field-text popup-link" placeholder="Введите url"
-          pattern="https?://.+" type="url" required></input>
-        <span class="urlAvatar-error popup__field-text-error"></span>
-        <button class="popup__button active-element">Сохранить</button>
+        <input id='urlAvatar' name='link' className={'popup__input popup__field-text popup-link'} placeholder='Введите url'
+          pattern='https?://.+' type='url' required></input>
+        <span className={'urlAvatar-error popup__field-text-error'}></span>
+        <button className={'popup__button active-element'}>Сохранить</button>
       </PopupWithForm>
 
       <PopupImg
         closePopup={closeAllPopup}
         selectedCard={selectedCard} />
 
-    </div>
+    </>
 
 
   );
