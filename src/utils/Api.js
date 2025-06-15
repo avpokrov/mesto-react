@@ -66,9 +66,9 @@ class Api {
         })
         .then((res) => this._checkData(res))
     }
-    changeLikeCard(cardId, method){
+    changeLikeCard(cardId, isLike){
         return fetch(`${this.params.baseURL}/cards/${cardId}/likes`, {
-            method: method,
+            method: `${isLike ? 'DELETE' : 'PUT'}`,
             headers: this.params.headers,            
         })
         .then((res) => this._checkData(res))
@@ -78,7 +78,7 @@ class Api {
             method: "PATCH",
             headers: this.params.headers,
             body: JSON.stringify({
-                avatar: urlAvatar.link
+                avatar: urlAvatar
             }) 
         })
         .then((res) =>this._checkData(res))

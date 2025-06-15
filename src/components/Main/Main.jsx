@@ -1,20 +1,10 @@
 import currentUserContext from '../../contexts/currentUserContexts';
-import api from '../../utils/Api';
 import Card from '../Card/Card'
-import { useState, useEffect } from 'react';
 import { useContext } from 'react';
 
 
-function Main({openProfilePopupOpen, openAddPlacePopupOpen, openEditAvatarPopupOpen, handleCardClick}) {
+function Main({ cards, openProfilePopupOpen, openAddPlacePopupOpen, openEditAvatarPopupOpen, handleCardClick, handleClickLike, handleCardDelete }) {
     const currentUser = useContext(currentUserContext);
-    useEffect(() => {
-        api.getCards()
-            .then((cards) => {
-                setCards(cards);
-            })
-            .catch((err) => console.log(err));
-    }, [])
-    const [cards, setCards] = useState([]);
 
     return (
         <>
@@ -35,7 +25,12 @@ function Main({openProfilePopupOpen, openAddPlacePopupOpen, openEditAvatarPopupO
             </section>
             <ul className='cards ident-top40px'>
                 {cards.map((item) => (
-                    <Card key={item._id} userId={currentUser._id} {...item} handleCardClick={handleCardClick}/>
+                    <Card key={item._id}
+                        card={item}
+                        handleCardClick={handleCardClick}
+                        handleClickLike={handleClickLike}
+                        handleCardDelete={handleCardDelete}
+                    />
                 ))}
             </ul>
         </>
