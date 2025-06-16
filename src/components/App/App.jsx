@@ -5,7 +5,7 @@ import api from '../../utils/Api';
 import Header from '../header/header';
 import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
-import PopupWithForm from '../PopupWithForm/PopupWithForm';
+import AddPlacePopup from '../AddPlacePopup/AddPlacePopup';
 import EditProfilePopup from '../EditProfilePopup/EditProfilePopup';
 import EditAvatarPopup from '../EditAvatarPopup/EditAvatarPopup';
 import PopupImg from '../PopupImg/PopupImg';
@@ -36,13 +36,13 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  function handleUpdateAvatar (url) {
+  function handleUpdateAvatar(url) {
     api.updateAvatar(url)
       .then((newProfile) => {
         console.log(newProfile);
         setCurrentUser(newProfile);
         closeAllPopup();
-      })  
+      })
       .catch((err) => console.log(err));
   }
 
@@ -64,6 +64,15 @@ function App() {
         })
         .catch((err) => console.log(err));
     }
+  }
+
+  function addCard(card) {
+    api.addCard(card)
+      .then((newCard) => {
+        setCards([newCard, ...cards])
+        closeAllPopup();
+      })
+      .catch((err) => console.log(err));
   }
 
   function closeAllPopup() {
@@ -116,24 +125,14 @@ function App() {
           handleUpdateAvatar={handleUpdateAvatar}
         >
         </EditAvatarPopup>
-
-
-        <PopupWithForm
-          name={'createCard'}
-          title={'Новое место'}
+        <AddPlacePopup
           isOpen={isAddPlacePopupOpen}
-          closePopup={closeAllPopup}
+          onClose={closeAllPopup}
+          addCard={addCard}
         >
-          <input id='addCard' name='name' className={'popup__input popup__field-text popup-name'} placeholder='Название'
-            minLength='2' maxLength='30' required></input>
-          <span className={'addCard-error popup__field-text-error'}></span>
-          <input id='urlCard' name='link' className={'popup__input popup__field-text popup-description'}
-            placeholder='Введите url' type='url'></input>
-          <span className={'urlCard-error popup__field-text-error'}></span>
-          <button className={'popup__button active-element'}>Создать</button>
-        </PopupWithForm>
+        </AddPlacePopup>
 
-        <PopupWithForm
+        {/* <PopupWithForm
           name={'accept'}
           title={'Вы уверены?'}
           closePopup={closeAllPopup}
@@ -142,7 +141,7 @@ function App() {
             <button className={'popup__button active-element popup__button_accept popup__button_accept_accept'}>Да</button>
             <button className={'popup__button active-element popup__button_accept popup__button_accept_cancel'}>Нет</button>
           </div>
-        </PopupWithForm>
+        </PopupWithForm> */}
 
         <PopupImg
           closePopup={closeAllPopup}
