@@ -22,7 +22,7 @@ function App() {
     Promise.all([api.getMyInfo(), api.getCards()])
       .then((values) => {
         setCurrentUser(values[0]);
-        setCards(values[1]);
+        setCards(values[1].reverse());
       })
       .catch((err) => console.log(err));
   }, [])
@@ -131,17 +131,6 @@ function App() {
           addCard={addCard}
         >
         </AddPlacePopup>
-
-        {/* <PopupWithForm
-          name={'accept'}
-          title={'Вы уверены?'}
-          closePopup={closeAllPopup}
-        >
-          <div className='popup-accept__block'>
-            <button className={'popup__button active-element popup__button_accept popup__button_accept_accept'}>Да</button>
-            <button className={'popup__button active-element popup__button_accept popup__button_accept_cancel'}>Нет</button>
-          </div>
-        </PopupWithForm> */}
 
         <PopupImg
           closePopup={closeAllPopup}

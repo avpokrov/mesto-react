@@ -5,7 +5,6 @@ import { useContext } from 'react';
 
 function Main({ cards, openProfilePopupOpen, openAddPlacePopupOpen, openEditAvatarPopupOpen, handleCardClick, handleClickLike, handleCardDelete }) {
     const currentUser = useContext(currentUserContext);
-
     return (
         <>
             <section className='profile ident-top40px'>
